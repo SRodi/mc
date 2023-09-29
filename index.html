@@ -86,8 +86,8 @@
             for (let i = 0; i < totalPayments; i++) {
                 const interestPayment = currentBalance * monthlyInterestRate;
                 const principalPayment = monthlyPayment - interestPayment;
+                currentBalance -= principalPayment;
                 if (currentBalance >= principalPayment) {
-                    currentBalance -= principalPayment;
                     amortizationTable.push({
                         date: formatDate(startDate),
                         interestPaid: interestPayment.toFixed(2),
