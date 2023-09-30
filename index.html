@@ -78,8 +78,11 @@
             const monthlyInterestRate = interestRate / 12;
             const totalPayments = term * 12;
             var monthlyPayment = (amount * monthlyInterestRate) / (1 - Math.pow(1 + monthlyInterestRate, -totalPayments));
-            monthlyPayment += extraRepayments * monthlyPayment
             
+            if (extraRepayments > 0) {
+                monthlyPayment += extraRepayments * monthlyPayment
+            }
+        
             let currentBalance = amount;
             const amortizationTable = [];
 
