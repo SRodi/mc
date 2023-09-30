@@ -102,7 +102,9 @@
                 }
             }
 
-            const totalInterestPaid = (amount * interestRate) - currentBalance;
+            let totalInterestPaid = 0;
+            amortizationTable.map(row => totalInterestPaid += row.interestPaid);
+
             const resultsElement = document.getElementById("results");
             resultsElement.innerHTML = `
                 <div>Monthly Payment: <strong>${monthlyPayment.toFixed(2)}</strong></div>
