@@ -85,6 +85,7 @@
         
             let currentBalance = amount;
             const amortizationTable = [];
+            var totalInterestPaid = 0;
 
             for (let i = 0; i < totalPayments; i++) {
                 const interestPayment = currentBalance * monthlyInterestRate;
@@ -100,10 +101,8 @@
 
                     startDate.setMonth(startDate.getMonth() + 1);
                 }
+                totalInterestPaid += interestPayment;
             }
-
-            let totalInterestPaid = 0;
-            amortizationTable.map(row => totalInterestPaid += row.interestPaid);
 
             const resultsElement = document.getElementById("results");
             resultsElement.innerHTML = `
